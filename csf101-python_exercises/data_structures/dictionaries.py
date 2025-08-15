@@ -13,3 +13,8 @@ print(person_info)
 
 person_info["favrite_color"] = "blue"
 print(person_info)
+
+try:
+    print(person_info["weight"])
+except KeyError as e:
+    print(f"Error: {e}")

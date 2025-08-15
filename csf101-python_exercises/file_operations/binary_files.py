@@ -1,16 +1,22 @@
-import os
+def create_brinary_file(filename):
+    data = bytes([0,1,2,3,4,5])
+    with open(filename, 'wb') as file:
+        file.write(data)
 
-def file_exists(filename):
-    return os.path.exists(filename)
+create_brinary_file('binary_sample.bin')
+print("Binary file created successfully.")
 
-print(f"'sample.txt' exists: {file_exists('sample.txt')}")
-print(f"'nonexistent.txt'exist: {file_exists('nonexistent.txt')}")
+def read_binary_file(filename):
+    with open(filename, 'rb') as file:
+        content = file.read()
+        print("binary content:", content)
 
-import os
+read_binary_file('binary_sample.bin')
 
-def rename_file(old_name, new_name):
-    os.rename(old_name, new_name)
+def append_to_binary_file(filename, data):
+    with open(filename, 'ab') as file:
+        file.write(data)
 
-rename_file('sample.txt', 'renamed_sample.txt')
-print("File renamed successfully")
-print(f"'renamed_sample.txt' exists: {file_exists('renamed_sample.txt')}")
+append_to_binary_file('binary_sample.bin', bytes([6, 7, 8, 9]))
+print("Bytes appended to binary file ")
+read_binary_file('binary_sample.bin')
